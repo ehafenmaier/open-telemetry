@@ -1,0 +1,16 @@
+version: "2"
+name: "otel-collector-observability"
+
+services:
+  otel-collector:
+   depends_on:
+     - prometheus
+   image: otel/opentelemetry-collector
+   ports:
+     - "4317:4317"
+     - "55679:55679"
+
+  prometheus:
+   image: prom/prometheus
+   ports:
+     - "9090:9090"
